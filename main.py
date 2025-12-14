@@ -1,5 +1,10 @@
+from ingestion.bike_share_client import fetch_station_information,fetch_station_status
+
 def main():
-    print("Hello from bikesharedashboard!")
+    print("Bike station status")
+    fetch_station_status()
+    print("Bike station information")
+    fetch_station_information()
 
 
 if __name__ == "__main__":
