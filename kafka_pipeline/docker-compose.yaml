@@ -4,6 +4,8 @@ services:
     container_name: kafka
     ports:
       - "9092:9092"
+      - "9094:9094"
+
     environment:
 
       ####################################
@@ -29,7 +31,7 @@ services:
         PLAINTEXT://kafka:9092,
         EXTERNAL://localhost:9094
       
-      KAFKA_LISTENERS_SECURITY_PROTOCOL_MAP: >
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: >
         PLAINTEXT:PLAINTEXT,
         CONTROLLER:PLAINTEXT,
         EXTERNAL:PLAINTEXT
@@ -46,14 +48,14 @@ services:
       #################################
       # Defaults 
       #################################
-      KAFKA_GROUP_INITAL_REBLANCE_DELAY_MS: 0
+      KAFKA_GROUP_INITAL_REBALANCE_DELAY_MS: 0
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
       KAFKA_NUM_PARTITIONS: 1
 
       KAFKA_PROCESS_ROLES: broker,controller
 
     volumes:
-      - .:/opt/kafka/logs
+      - ./kafka_data:/opt/kafka/logs
   
   kafbat-ui:
     container_name: kafbat-ui
