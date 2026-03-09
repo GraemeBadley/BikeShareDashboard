@@ -23,9 +23,6 @@ def main():
     for station in full_info_stations:
         producer.send('stations_update',key=station["station_id"], value=station)
     
-    
-    
-
     producer.flush()
     print(full_info_stations[0].keys())
 
